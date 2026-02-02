@@ -1,31 +1,13 @@
 # Shopware 5
 
-![Build Status](https://github.com/shopware5/shopware/workflows/PHPUnit/badge.svg)
-[![Crowdin](https://d322cqt584bo4o.cloudfront.net/shopware/localized.svg)](https://crowdin.com/project/shopware)
-[![Latest Stable Version](https://poser.pugx.org/shopware/shopware/v/stable)](https://packagist.org/packages/shopware/shopware)
-[![Total Downloads](https://poser.pugx.org/shopware/shopware/downloads)](https://packagist.org/packages/shopware/shopware)
-[![Slack](https://img.shields.io/badge/chat-on%20slack-%23ECB22E)](http://slack.shopware.com?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+Fork of the official https://github.com/shopware5/shopware repository.
+Uses docker compose, phpenv (optional) and symfony-cli to run a shopware 5 dev instance.
 
-- **License**: GNU General Public License v3 (some used parts have different licenses, which can be found in the respective files or directories)
-- **GitHub Repository**: <https://github.com/shopware5/shopware>
-- **Issues**: <https://github.com/shopware5/shopware/issues>
+### Requirements
 
-## Overview
-
-![Shopware 5 collage](https://assets.shopware.com/media/github/shopware5_readme.png)
-
-Shopware 5 is an open source e-commerce software made in Germany.
-Based on technologies like `Symfony 4`, `Doctrine 2` & `Zend Framework` Shopware comes as the perfect platform for your e-commerce project.
-Furthermore, Shopware 5 provides an event-driven plugin system and an advanced hook system, giving you the ability to customize nearly every part of the platform.
-
-----
-
-### Shopware Server Requirements
-
-- PHP 7.4.0 or above
-- [Apache 2.2 or 2.4](https://httpd.apache.org/)
-- Apache's `mod_rewrite` module
-- MySQL 5.7.0 or above
+- PHP 8.2.29
+- [Symfony CLI](https://symfony.com/download)
+- Docker and docker compose
 
 #### Required PHP extensions:
 
@@ -47,13 +29,18 @@ Furthermore, Shopware 5 provides an event-driven plugin system and an advanced h
 -   <a href="https://php.net/manual/en/ref.pdo-mysql.php" target="_blank">PDO/MySQL</a>
 -   <a href="https://php.net/manual/de/book.fileinfo.php" target="_blank">fileinfo</a>
 
-### Installation via Git
+#### Installing PHP with phpenv
 
-Follow the instruction below if you want to install Shopware 5 using Git.
+1. Install https://github.com/phpenv/phpenv with https://github.com/php-build/php-build into `~/.phpenv` (as recommended)
+2. Add `~/.phpenv/bin` to `PATH`
+3. Execute `~/.phpenv/plugins/php-build/install-dependencies.sh`
+4. Install PHP 8.2.29: `phpenv install 8.2.29`
+
+### Installation
 
 1.) Clone the git repository to the desired location using:
 
-    git clone https://github.com/shopware5/shopware.git
+    git clone https://github.com/codebarista-de/shopware-5-development.git
 
 In case you wish to contribute to Shopware, fork the `5.7` branch rather than cloning it, and create a pull request via GitHub.
 For further information please read the section ["Get involved"](#get-involved) of this document.
@@ -72,7 +59,6 @@ You can also start testing with lower permissions due to security reasons (644 f
 
 3.) A [Makefile](https://www.gnu.org/software/make/manual/make.html) may be used to set up the configuration and database connection:
 
-* Copy `.env.dist` to `.env` and modify variables if needed
 * ``make init``
 
 **Info regarding platform inter-compatibility**
@@ -95,42 +81,25 @@ Unzip the files inside the root directory:
 You can now access your shop.
 The test_images.zip file also includes thumbnails for the responsive theme.
 
-# Backend
+## Run
 
-The backend is located at `/backend` example `http://your.shop.com/backend`.
+Execute `./start_server.sh` or start docker and the symfony-cli server manually:
+```sh
+docker compose up -d
+symfony server:start --document-root=. --passthru=shopware.php --port=80
+```
+
+### Backend
+
+The backend is located at `/backend` example `http://localhost/backend`.
 Backend Login: demo/demo
 
 If you want to have full-featured demo data, you should download the respective demo data plugin in the First Run Wizard or in the Plugin Manager.
 
-# Frontend users in demo data
+### Frontend users in demo data
 
 * Customer: test@example.com / shopware
 * B2B: mustermann@b2b.de / mustermann
-
-# Get involved
-
-Shopware is available under GPL v3 license.
-If you want to contribute code (features or bugfixes), you have to create a pull request and include valid license information.
-You can either contribute your code under New BSD or MIT license.
-
-If you want to contribute to the backend part of Shopware, and your changes affect or are based on ExtJS code, they must be licensed under GPL V3, as per license requirements from Sencha Inc.
-
-For more information about contributing to Shopware, please see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-
-### How to report bugs / request features?
-
-We've always had an ear for our community, so please feel free to submit issues with bug reports or feature requests.
-Just create a new issue [here](https://github.com/shopware5/shopware/issues) using the respective templates.
-
-# Copying / License
-
-Shopware is distributed under the AGPL v3.
-You can find the whole license text in the [license.txt](license.txt) file.
-
-# Changelog
-
-The changelog and all available commits can be found [here](https://github.com/shopware5/shopware/releases).
 
 ## Further reading
 

@@ -1,0 +1,23 @@
+
+services:
+###> shopware/core ###
+  database:
+    image: mysql:8.0.45-oracle
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+       - ./docker/db/data:/var/lib/mysql:rw
+    ports:
+      - "${DB_PORT}:3306"
+  mailer:
+    image: axllent/mailpit
+    ports:
+      - "1025"
+      - "8025"
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+###< shopware/core ###
