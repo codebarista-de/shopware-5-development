@@ -101,6 +101,17 @@ If you want to have full-featured demo data, you should download the respective 
 * Customer: test@example.com / shopware
 * B2B: mustermann@b2b.de / mustermann
 
+## Debugging
+
+Add the following lines to your `xdebug.ini` (e.g. `~/.phpenv/versions/8.2.29/etc/conf.d/xdebug.ini`):
+```
+xdebug.mode = debug
+xdebug.start_with_request = yes
+xdebug.discover_client_host = false
+xdebug.client_port = 9003
+xdebug.log_level = 0
+```
+
 ## Further reading
 
 * [Shopware Developer Documentation](https://developers.shopware.com/)

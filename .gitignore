@@ -43,9 +43,6 @@ Thumbs.db
 /config.php
 /config_*.php
 
-/.env.*
-!/.env.dist
-
 .htaccess
 
 # Caches/Proxies
@@ -89,7 +86,6 @@ Thumbs.db
 # tooling
 .php_cs
 .php_cs.cache
-/.env
 /.make.*
 
 # tests / ci
