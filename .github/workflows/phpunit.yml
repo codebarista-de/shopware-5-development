@@ -54,6 +54,7 @@ jobs:
                     restore-keys: |
                         ${{ runner.os }}-composer-
             -   run: composer update 'laminas/*' cocur/slugify
+            -   run: rm .env
             -   run: make test-phpunit
     mysql:
         strategy:
@@ -100,6 +101,7 @@ jobs:
                     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                     restore-keys: |
                         ${{ runner.os }}-composer-
+            -   run: rm .env
             -   run: make test-phpunit
     Code-Coverage:
         runs-on: ubuntu-latest
@@ -141,6 +143,7 @@ jobs:
                     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                     restore-keys: |
                         ${{ runner.os }}-composer-
+            -   run: rm .env
             -   run: make test-phpunit-coverage-statistic
     es:
         runs-on: ubuntu-latest
