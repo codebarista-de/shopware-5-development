@@ -127,6 +127,9 @@ jobs:
                     restore-keys: |
                         ${{ runner.os }}-composer-
 
+            -   name: Remove .env
+                run: rm .env
+
             -   name: Install Shopware
                 run: make init
 

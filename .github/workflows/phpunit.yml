@@ -183,5 +183,6 @@ jobs:
                     key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
                     restore-keys: |
                         ${{ runner.os }}-composer-
+            -   run: rm .env
             -   run: make init
             -   run: make test-phpunit-elasticsearch
