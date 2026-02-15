@@ -88,6 +88,7 @@ jobs:
 
             -   name: Generate new sql
                 run: |
+                    rm .env
                     make config
                     php bin/console sw:migrations:migrate --mode=install
                     php bin/console sw:snippets:to:sql ./recovery/install/data/sql/snippets.sql --force --include-default-plugins --update=false
